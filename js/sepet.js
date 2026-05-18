@@ -1,5 +1,3 @@
-console.log('YENI SEPET.JS ÇALIŞTI v10');
-
 const email = localStorage.getItem('aktifKullanici');
 
 if (!email) {
@@ -15,6 +13,8 @@ function sepetGoster() {
     const odemeFormu = document.getElementById('odemeFormu');
     const ozet = document.getElementById('odemeSepetOzet');
     const toplam = document.getElementById('odemeToplam');
+
+    if (!liste || !bosMesaj || !odemeFormu || !ozet || !toplam) return;
 
     liste.innerHTML = '';
     ozet.innerHTML = '';
@@ -32,7 +32,8 @@ function sepetGoster() {
     odemeFormu.classList.remove('gizli');
 
     sepet.forEach((urun, index) => {
-        toplamFiyat += Number(urun.fiyat);
+        const fiyat = Number(urun.fiyat) || 0;
+        toplamFiyat += fiyat;
 
         const div = document.createElement('div');
         div.className = 'sepet-urun';
@@ -43,7 +44,7 @@ function sepetGoster() {
                 <h3>${urun.baslik}</h3>
                 <p>${urun.tip === 'dizi' ? 'Dizi' : 'Film'}</p>
             </div>
-            <div class="sepet-urun-fiyat">${urun.fiyat} ₺</div>
+            <div class="sepet-urun-fiyat">${fiyat.toFixed(2)} ₺</div>
             <button type="button" class="sepet-sil-btn" onclick="urunSil(${index})">✕</button>
         `;
 
@@ -54,7 +55,7 @@ function sepetGoster() {
 
         ozetDiv.innerHTML = `
             <span>${urun.baslik}</span>
-            <span>${urun.fiyat} ₺</span>
+            <span>${fiyat.toFixed(2)} ₺</span>
         `;
 
         ozet.appendChild(ozetDiv);
@@ -69,82 +70,90 @@ function urunSil(index) {
     sepetGoster();
 }
 
-document.getElementById('kartNo').addEventListener('input', function (e) {
-    let val = e.target.value.replace(/\D/g, '');
-    val = val.match(/.{1,4}/g)?.join(' ') || val;
-    e.target.value = val;
-});
+function kartInputlariniHazirla() {
+    const kartNoInput = document.getElementById('kartNo');
+    const kartTarihInput = document.getElementById('kartTarih');
+    const kartCvvInput = document.getElementById('kartCvv');
 
-document.getElementById('kartTarih').addEventListener('input', function (e) {
-    let val = e.target.value.replace(/\D/g, '');
-
-    if (val.length >= 2) {
-        val = val.slice(0, 2) + '/' + val.slice(2, 4);
+    if (kartNoInput) {
+        kartNoInput.addEventListener('input', function (e) {
+            let val = e.target.value.replace(/\D/g, '');
+            val = val.match(/.{1,4}/g)?.join(' ') || val;
+            e.target.value = val;
+        });
     }
 
-    e.target.value = val;
-});
+    if (kartTarihInput) {
+        kartTarihInput.addEventListener('input', function (e) {
+            let val = e.target.value.replace(/\D/g, '');
 
-document.getElementById('kartCvv').addEventListener('input', function (e) {
-    e.target.value = e.target.value.replace(/\D/g, '');
-});
+            if (val.length >= 2) {
+                val = val.slice(0, 2) + '/' + val.slice(2, 4);
+            }
+
+            e.target.value = val;
+        });
+    }
+
+    if (kartCvvInput) {
+        kartCvvInput.addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    }
+}
+
+function mesajGoster(tur, metin) {
+    const mesaj = document.getElementById('odemeMesaj');
+
+    if (!mesaj) return;
+
+    mesaj.className = `form-mesaj ${tur}`;
+    mesaj.textContent = metin;
+}
 
 function odemeYap(event) {
     if (event) {
         event.preventDefault();
     }
 
-    console.log('odemeYap çalıştı');
-    console.log('Aktif kullanıcı:', email);
-    console.log('Sepet key:', sepetKey);
-    console.log('Sepet:', sepet);
-
     const isim = document.getElementById('kartIsim').value.trim();
     const kartNo = document.getElementById('kartNo').value.trim();
     const tarih = document.getElementById('kartTarih').value.trim();
     const cvv = document.getElementById('kartCvv').value.trim();
-    const mesaj = document.getElementById('odemeMesaj');
 
-    mesaj.textContent = '';
-    mesaj.className = 'form-mesaj';
+    mesajGoster('', '');
 
     if (sepet.length === 0) {
-        mesaj.className = 'form-mesaj hata';
-        mesaj.textContent = 'Sepet boş olduğu için ödeme yapılamaz!';
+        mesajGoster('hata', 'Sepet boş olduğu için ödeme yapılamaz!');
         return;
     }
 
     if (!isim || !kartNo || !tarih || !cvv) {
-        mesaj.className = 'form-mesaj hata';
-        mesaj.textContent = 'Lütfen tüm ödeme bilgilerini doldurun!';
+        mesajGoster('hata', 'Lütfen tüm ödeme bilgilerini doldurun!');
         return;
     }
 
     const temizKartNo = kartNo.replace(/\s/g, '');
 
     if (temizKartNo.length !== 16) {
-        mesaj.className = 'form-mesaj hata';
-        mesaj.textContent = 'Kart numarası 16 haneli olmalı!';
+        mesajGoster('hata', 'Kart numarası 16 haneli olmalı!');
         return;
     }
 
     if (!/^\d{2}\/\d{2}$/.test(tarih)) {
-        mesaj.className = 'form-mesaj hata';
-        mesaj.textContent = 'Son kullanma tarihi AA/YY formatında olmalı!';
+        mesajGoster('hata', 'Son kullanma tarihi AA/YY formatında olmalı!');
         return;
     }
 
     if (cvv.length !== 3) {
-        mesaj.className = 'form-mesaj hata';
-        mesaj.textContent = 'CVV 3 haneli olmalı!';
+        mesajGoster('hata', 'CVV 3 haneli olmalı!');
         return;
     }
 
     const kullaniciData = localStorage.getItem('kullanici_' + email);
 
     if (!kullaniciData) {
-        mesaj.className = 'form-mesaj hata';
-        mesaj.textContent = 'Kullanıcı bulunamadı!';
+        mesajGoster('hata', 'Kullanıcı bulunamadı!');
         return;
     }
 
@@ -154,10 +163,10 @@ function odemeYap(event) {
         kullanici.satinanlar = [];
     }
 
-    sepet.forEach(function (urun) {
-        const zatenSatinAlinmis = kullanici.satinanlar.some(function (item) {
-            return item.id === urun.id && item.tip === urun.tip;
-        });
+    sepet.forEach(urun => {
+        const zatenSatinAlinmis = kullanici.satinanlar.some(
+            item => item.id === urun.id && item.tip === urun.tip
+        );
 
         if (!zatenSatinAlinmis) {
             kullanici.satinanlar.push({
@@ -176,14 +185,14 @@ function odemeYap(event) {
     localStorage.setItem(sepetKey, JSON.stringify(sepet));
     localStorage.removeItem('sepet');
 
-    console.log(
-        'Ödeme sonrası kullanıcı:',
-        JSON.parse(localStorage.getItem('kullanici_' + email))
-    );
-
     sepetGoster();
 
-    document.getElementById('basariModal').classList.remove('gizli');
+    const basariModal = document.getElementById('basariModal');
+
+    if (basariModal) {
+        basariModal.classList.remove('gizli');
+    }
 }
 
+kartInputlariniHazirla();
 sepetGoster();
