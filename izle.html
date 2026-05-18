@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İzle — Cinesal</title>
+    
+    <link rel="icon" type="image/png" href="images/cinesal-icon.png">
+    
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css?v=30">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+    <a href="index.html">
+        <img src="images/cinesal-logo.png" alt="Cinesal Logo" class="logo-img">
+    </a>
+</div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="filmler.html">Filmler</a></li>
+            <li><a href="diziler.html">Diziler</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="giris.html" class="btn-giris">Giriş Yap</a>
+        </div>
+    </nav>
+
+    <section class="izle-section">
+        <div class="container">
+
+            <div class="izle-ust">
+                <a href="javascript:history.back()" class="geri-btn">← Geri Dön</a>
+                <h1 id="izleBaslik">İçerik Yükleniyor...</h1>
+            </div>
+
+            <div class="video-kapsayici" id="videoAlani">
+                <!-- Video JS ile buraya gelecek -->
+            </div>
+
+            <div class="izle-bilgi">
+                <h2 id="izleAltBaslik"></h2>
+                <p id="izleAciklama"></p>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/izle.js?v=30"></script>
+
+</body>
+</html>

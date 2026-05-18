@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinesal — Film ve Dizi Platformu</title>
+    <link rel="icon" type="image/png" href="images/cinesal-icon.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+    <div class="nav-logo">
+    <a href="index.html">
+        <img src="images/cinesal-logo.png" alt="Cinesal Logo" class="logo-img">
+    </a>
+</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="filmler.html">Filmler</a></li>
+        <li><a href="diziler.html">Diziler</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="giris.html" class="btn-giris">Giriş Yap</a>
+    </div>
+</nav>
+<!-- HERO BÖLÜMÜ -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Haftanın Önerisi</div>
+        <h1 class="hero-title">Interstellar</h1>
+        <p class="hero-meta">2014 • Bilim Kurgu • 2s 49dk</p>
+        <div class="hero-badges">
+            <span class="badge badge-red">HD</span>
+            <span class="badge">IMDB 8.7</span>
+            <span class="badge">+13</span>
+        </div>
+        <p class="hero-desc">
+            Dünya artık yaşanmaz hale gelirken bir grup kaşif, 
+            insanlığın geleceğini kurtarmak için uzay ve zamanın 
+            sınırlarını aşan bir yolculuğa çıkar.
+        </p>
+        <div class="hero-butonlar">
+            <a href="detay.html?id=1&tip=film" class="btn-primary">
+        Detaylara Git
+            </a>
+
+            <a href="detay.html?id=1&tip=film#fragman" class="btn-secondary">
+        Fragman İzle
+            </a>
+        </div>
+    </div>
+</section>
+<!-- POPÜLER FİLMLER -->
+<section class="kartlar-section">
+    <div class="container">
+        <h2 class="section-title">Popüler <span>Filmler</span></h2>
+        <div class="kartlar-grid" id="filmKartlari">
+            <!-- Kartlar JS ile gelecek -->
+        </div>
+    </div>
+</section>
+<!-- POPÜLER DİZİLER -->
+<section class="kartlar-section">
+    <div class="container">
+        <h2 class="section-title">Popüler <span>Diziler</span></h2>
+        <div class="kartlar-grid" id="diziKartlari">
+            <!-- Kartlar JS ile gelecek -->
+        </div>
+    </div>
+</section>
+     <script src="js/data.js"></script>
+     <script src="js/main.js"></script>
+</body>
+</html>

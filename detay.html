@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detay — Cinesal</title>
+    <link rel="icon" type="image/png" href="images/cinesal-icon.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+    <a href="index.html">
+        <img src="images/cinesal-logo.png" alt="Cinesal Logo" class="logo-img">
+    </a>
+</div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="filmler.html">Filmler</a></li>
+            <li><a href="diziler.html">Diziler</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="giris.html" class="btn-giris">Giriş Yap</a>
+        </div>
+    </nav>
+
+    <section class="detay-section">
+        <div class="container">
+
+            <div class="detay-ust">
+                <!-- POSTER -->
+                <div class="detay-poster">
+                    <img id="detayGorsel" src="" alt="">
+                </div>
+
+                <!-- BİLGİLER -->
+                <div class="detay-bilgiler">
+                    <h1 id="detayBaslik">Yükleniyor...</h1>
+                    <p class="detay-meta" id="detayMeta"></p>
+
+                    <div class="detay-badges" id="detayBadges"></div>
+
+                    <p class="detay-aciklama" id="detayAciklama"></p>
+
+                    <div class="detay-fiyat">
+                        <span id="detayFiyat"></span>
+                    </div>
+
+                    <div class="detay-butonlar">
+                        <button class="btn-primary" onclick="sepeteEkle()">
+                            🛒 Satın Al
+                        </button>
+                        <button class="btn-secondary" onclick="listeyeEkle()">
+                            + Listeye Ekle
+                        </button>
+                    </div>
+
+                    <div class="form-mesaj" id="detayMesaj"></div>
+                </div>
+            </div>
+
+            <!-- TRAILER -->
+            <div class="detay-trailer">
+                <h2>Fragman</h2>
+                <div class="trailer-cerceve">
+                    <iframe id="detayTrailer" src="" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- MİNİ SEPET -->
+    <script src="js/data.js"></script>
+    <script src="js/detay.js"></script>
+    <script src="js/main.js"></script>
+
+    <div class="mini-sepet" id="miniSepet">
+        <div class="mini-sepet-baslik">
+            <h3>🛒 Sepetim</h3>
+            <button onclick="miniSepetKapat()">✕</button>
+        </div>
+        <div class="mini-sepet-icerik" id="miniSepetIcerik">
+        </div>
+        <div class="mini-sepet-alt">
+            <div class="mini-sepet-toplam">
+                <span>Toplam:</span>
+                <span id="miniSepetToplam">0 ₺</span>
+            </div>
+            <a href="sepet.html" class="btn-primary" style="display:block;text-align:center;margin-top:12px;">
+                Ödemeye Geç
+            </a>
+        </div>
+    </div>
+    <div class="sepet-overlay" id="sepetOverlay" onclick="miniSepetKapat()"></div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepet — Cinesal</title>
+    <link rel="icon" type="image/png" href="images/cinesal-icon.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css?v=20">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+    <a href="index.html">
+        <img src="images/cinesal-logo.png" alt="Cinesal Logo" class="logo-img">
+    </a>
+</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="filmler.html">Filmler</a></li>
+            <li><a href="diziler.html">Diziler</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="giris.html" class="btn-giris">Giriş Yap</a>
+        </div>
+    </nav>
+
+    <section class="sepet-section">
+        <div class="container">
+            <div class="sayfa-baslik">
+                <h1>Sepetim <span>& Ödeme</span></h1>
+                <p>Satın almak istediğin içerikleri gözden geçir ve ödemeyi tamamla.</p>
+            </div>
+
+            <div class="sepet-grid">
+
+                <!-- SEPET ÜRÜNLERİ -->
+                <div class="sepet-sol">
+                    <div id="sepetListesi"></div>
+                    <div class="bos-liste gizli" id="bosSepetMesaj">
+                        <p>🛒 Sepetiniz boş!</p>
+                        <p>Film veya dizi sayfasından sepete ekleyebilirsin.</p>
+                        <a href="filmler.html" class="btn-primary">Filmlere Göz At</a>
+                    </div>
+                </div>
+
+                <!-- ÖDEME FORMU -->
+                <div class="sepet-sag" id="odemeFormu">
+                    <div class="odeme-ozet">
+                        <h3>Sipariş Özeti</h3>
+                        <div id="odemeSepetOzet"></div>
+                        <div class="odeme-toplam">
+                            <span>Toplam</span>
+                            <span id="odemeToplam">0 ₺</span>
+                        </div>
+                    </div>
+
+                    <div class="odeme-form">
+                        <h3>Ödeme Bilgileri</h3>
+                        <div class="form-grup">
+                            <label>Kart Üzerindeki İsim</label>
+                            <input type="text" id="kartIsim" placeholder="Ad Soyad">
+                        </div>
+                        <div class="form-grup">
+                            <label>Kart Numarası</label>
+                            <input type="text" id="kartNo" placeholder="**** **** **** ****" maxlength="19">
+                        </div>
+                        <div class="odeme-satir">
+                            <div class="form-grup">
+                                <label>Son Kullanma</label>
+                                <input type="text" id="kartTarih" placeholder="AA/YY" maxlength="5">
+                            </div>
+                            <div class="form-grup">
+                                <label>CVV</label>
+                                <input type="text" id="kartCvv" placeholder="***" maxlength="3">
+                            </div>
+                        </div>
+                        <div class="form-mesaj" id="odemeMesaj"></div>
+                        <button type="button" class="auth-btn" onclick="odemeYap(event)">
+                            🔒 Ödemeyi Tamamla
+                        </button>
+                        <p class="odeme-guvenlik">🔐 256-bit SSL ile güvenli ödeme</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖDEME BAŞARILI MODAL -->
+    <div class="modal-overlay gizli" id="basariModal">
+        <div class="modal">
+            <div class="modal-ikon">🎉</div>
+            <h2>Ödeme Başarılı!</h2>
+            <p>Satın aldığın içerikler profiline eklendi.</p>
+            <p>İyi seyirler!</p>
+            <a href="index.html" class="btn-primary" style="display:block;text-align:center;margin-top:20px;">
+                Ana Sayfaya Dön
+            </a>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/sepet.js?v=20"></script>
+</body>
+</html>

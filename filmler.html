@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmler — Cinesal</title>
+    <link rel="icon" type="image/png" href="images/cinesal-icon.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+    <a href="index.html">
+        <img src="images/cinesal-logo.png" alt="Cinesal Logo" class="logo-img">
+    </a>
+</div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="filmler.html">Filmler</a></li>
+            <li><a href="diziler.html">Diziler</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="giris.html" class="btn-giris">Giriş Yap</a>
+        </div>
+    </nav>
+
+    <!-- SAYFA BAŞLIĞI -->
+    <section class="sayfa-baslik">
+        <div class="container">
+            <h1>Tüm <span>Filmler</span></h1>
+            <p>İstediğin filmi bul, hemen izle veya satın al.</p>
+        </div>
+    </section>
+
+    <!-- FİLTRE -->
+    <section class="filtre-section">
+        <div class="container">
+            <div class="filtre-grup">
+                <button class="filtre-btn aktif" data-tur="hepsi">Hepsi</button>
+                <button class="filtre-btn" data-tur="Bilim Kurgu">Bilim Kurgu</button>
+                <button class="filtre-btn" data-tur="Aksiyon">Aksiyon</button>
+                <button class="filtre-btn" data-tur="Gerilim">Gerilim</button>
+                <button class="filtre-btn" data-tur="Dram">Dram</button>
+                <button class="filtre-btn" data-tur="Tarih">Tarih</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FİLM KARTLARI -->
+    <section class="kartlar-section">
+        <div class="container">
+            <div class="kartlar-grid" id="filmlerGrid">
+            </div>
+        </div>
+    </section>
+
+    <script src="js/data.js"></script>
+    <script src="js/filmler.js"></script>
+</body>
+</html>

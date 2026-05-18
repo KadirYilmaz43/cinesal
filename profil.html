@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilim — Cinesal</title>
+    <link rel="icon" type="image/png" href="images/cinesal-icon.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+    <a href="index.html">
+        <img src="images/cinesal-logo.png" alt="Cinesal Logo" class="logo-img">
+    </a>
+</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="filmler.html">Filmler</a></li>
+            <li><a href="diziler.html">Diziler</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="giris.html" class="btn-giris">Giriş Yap</a>
+        </div>
+    </nav>
+
+    <section class="profil-section">
+        <div class="container">
+
+            <!-- PROFİL BAŞLIK -->
+            <div class="profil-header">
+                <div class="profil-avatar">👤</div>
+                <div class="profil-bilgi">
+                    <h1 id="profilAd">Yükleniyor...</h1>
+                    <p id="profilEmail">Yükleniyor...</p>
+                </div>
+                <button class="btn-cikis" onclick="cikisYap()">Çıkış Yap</button>
+            </div>
+
+            <!-- PROFİL BİLGİLERİ -->
+            <div class="profil-grid">
+                <div class="profil-kart">
+                    <h3>Hesap Bilgileri</h3>
+                    <div class="profil-satir">
+                        <span class="profil-etiket">Ad Soyad</span>
+                        <span id="bilgiAd">—</span>
+                    </div>
+                    <div class="profil-satir">
+                        <span class="profil-etiket">E-posta</span>
+                        <span id="bilgiEmail">—</span>
+                    </div>
+                    <div class="profil-satir">
+                        <span class="profil-etiket">Üyelik</span>
+                        <span class="rozet-uye">Standart Üye</span>
+                    </div>
+                </div>
+
+                <div class="profil-kart">
+                    <h3>İstatistikler</h3>
+                    <div class="profil-satir">
+                        <span class="profil-etiket">Listemde</span>
+                        <span id="listeAdet">0 içerik</span>
+                    </div>
+                    <div class="profil-satir">
+                        <span class="profil-etiket">Satın Alınan</span>
+                        <span id="satinanAdet">0 içerik</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/profil.js"></script>
+</body>
+</html>
